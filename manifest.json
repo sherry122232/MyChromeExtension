@@ -1,0 +1,43 @@
+{
+  "manifest_version": 3,
+  "name": "Bookmark Extension",
+  "version": "1.0.0",
+  "description": "Adds the current URL to bookmarks",
+  "icons": {
+    "16": "/assets/icon16.png",
+    "48": "/assets/icon32.png",
+    "128": "/assets/icon96.png"
+  },
+
+  "host_permissions": ["https://*/*"],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "assets/bookmark.png",
+        "assets/play.png",
+        "assets/delete.png",
+        "assets/save.png"
+      ],
+      "matches": ["https://*/*"]
+    }
+  ],
+"permissions": ["storage", "tabs", "bookmarks" ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*/*"],
+      "js": ["contentScript.js"]
+    }
+  ],
+  "action": {
+    "default_icon": {
+      "16": "/assets/icon16.png",
+      "48": "/assets/icon32.png",
+      "128": "/assets/icon96.png"
+    },
+    "default_title": "My YT Bookmarks",
+    "default_popup": "popup.html"
+  }
+}
